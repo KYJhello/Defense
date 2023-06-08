@@ -93,6 +93,7 @@ public class UIManager : MonoBehaviour
         WindowUI ui = GameManager.Resource.Load<WindowUI>(path);
         ShowWindowUI(ui);
     }
+    // 선택된 윈도우를 첫번째 리스트 요소와 서로 위치를 바꾼 후 정렬순서(sorting order) 차례로 재설정하기 
     public void SelectWindowUI(WindowUI windowUI)
     {
         
