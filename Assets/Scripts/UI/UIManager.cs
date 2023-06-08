@@ -11,7 +11,7 @@ public class UIManager : MonoBehaviour
     private Stack<PopUpUI> popUpStack;
 
     private Canvas windowCanvas;
-    //private List<WindowUI> windowList;
+    private List<WindowUI> windowList;
 
     private Canvas inGameCanvas;
 
@@ -28,6 +28,7 @@ public class UIManager : MonoBehaviour
         windowCanvas = GameManager.Resource.Instantiate<Canvas>("UI/Canvas");
         windowCanvas.gameObject.name = "WindowCanvas";
         windowCanvas.sortingOrder = 10;
+        windowList = new List<WindowUI>();
 
         // gameSeceneCanvas.sortingOrder = 1;
 
@@ -79,6 +80,8 @@ public class UIManager : MonoBehaviour
 
     public T ShowWindowUI<T>(T windowUI) where T : WindowUI
     {
+        windowList.Add(windowUI);
+
         T ui = GameManager.Pool.GetUI(windowUI);
         // 상대 위치
         ui.transform.SetParent(windowCanvas.transform, false);
@@ -92,7 +95,8 @@ public class UIManager : MonoBehaviour
     }
     public void SelectWindowUI(WindowUI windowUI)
     {
-        windowUI.transform.SetAsLastSibling();
+        
+        //windowUI.transform.SetAsLastSibling();
     }
 
     public void CloseWindowUI(WindowUI windowUI)
