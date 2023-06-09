@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
-    public TowerData data;
+    protected TowerData data;
+
+    protected List<EnemyController> enemyList;
 
     //public int damage;
     //public float range;
@@ -12,8 +14,16 @@ public class Tower : MonoBehaviour
     
     //public Tower nextLevelTower;
 
-    private void Awake()
+    protected virtual void Awake()
     {
-        
+        enemyList = new List<EnemyController>();
+    }
+    public void AddEnemy(EnemyController enemy)
+    {
+        enemyList.Add(enemy);
+    }
+    public void RemoveEnemy(EnemyController enemy)
+    {
+        enemyList.Remove(enemy);
     }
 }

@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class MageTower : Tower
 {
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         data = GameManager.Resource.Load<TowerData>("Data/MageTowerData");
     }
 }
